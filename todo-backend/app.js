@@ -13,18 +13,23 @@ const errorsController = require("./controllers/errors");
 
 const app = express();
 
-app.use(express.urlencoded());
+// app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 const PORT= process.env.PORT || 3001;
 app.use(express.json());
 // app.use(cors());
 
 app.use(
   cors({
-    origin: ["https://todo-react-app-phi-neon.vercel.app"],
+    origin: ["https://todo-react-app-phi-neon.vercel.app","http://localhost:3001"],
     methods: ["POST", "GET"],
     credentials: true,
   })
 );
+
+app.get("/", (req, res) => {
+  res.json("Welcome To TODO API");
+});
 
 app.use("/api/todo", todoItemsRouter);
 
