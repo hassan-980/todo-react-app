@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "https://todo-react-api-3.vercel.app";
+const API_URL = "https://todo-react-app-w88p.onrender.com";
 
 export const addItemToServer = async (task, date) => {
   const response = await fetch("API_URL/api/todo", {
