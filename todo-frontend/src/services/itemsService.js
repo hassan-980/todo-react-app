@@ -1,5 +1,8 @@
+import axios from "axios";
+const API_URL = "https://todo-react-api-3.vercel.app";
+
 export const addItemToServer = async (task, date) => {
-  const response = await fetch("http://localhost:3001/api/todo", {
+  const response = await fetch("API_URL/api/todo", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -11,14 +14,14 @@ export const addItemToServer = async (task, date) => {
 };
 
 export const getItemsFromServer = async () => {
-  const response = await fetch("http://localhost:3001/api/todo");
+  const response = await fetch("API_URL/api/todo");
   const items = await response.json();
   return items.map(mapServerItemToLocalItem);
 };
 
 export const markItemCompletedOnServer = async (id) => {
   const response = await fetch(
-    `http://localhost:3001/api/todo/${id}/completed`,
+    `API_URL/api/todo/${id}/completed`,
     {
       method: "PUT",
     }
@@ -28,7 +31,7 @@ export const markItemCompletedOnServer = async (id) => {
 };
 
 export const deleteItemFromServer = async (id) => {
-  await fetch(`http://localhost:3001/api/todo/${id}`, {
+  await fetch(`API_URL/api/todo/${id}`, {
     method: "DELETE",
   });
   return id;
