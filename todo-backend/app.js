@@ -15,7 +15,15 @@ const app = express();
 
 app.use(express.urlencoded());
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+
+app.use(
+  cors({
+    origin: ["https://todo-react-app-phi-neon.vercel.app/", "http://localhost:3000"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
 app.use("/api/todo", todoItemsRouter);
 
