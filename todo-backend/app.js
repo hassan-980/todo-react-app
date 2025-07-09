@@ -19,7 +19,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["https://todo-react-app-phi-neon.vercel.app/"],
+    origin: ["https://todo-react-app-phi-neon.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   })
