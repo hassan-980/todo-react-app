@@ -26,6 +26,15 @@ app.use(
     credentials: true,
   })
 );
+mongoose.connect(DB_PATH).then(() => {
+  console.log('Connected to Mongo');
+  app.listen(PORT, () => {
+    console.log(`Server running on address http://localhost:${PORT}`);
+  });
+}).catch(err => {
+  console.log('Error while connecting to Mongo: ', err);
+});
+
 
 app.get("/", (req, res) => {
   res.json("Welcome To TODO API");
@@ -36,11 +45,3 @@ app.use("/api/todo", todoItemsRouter);
 // app.use(errorsController.pageNotFound);
 
 
-mongoose.connect(DB_PATH).then(() => {
-  console.log('Connected to Mongo');
-  app.listen(PORT, () => {
-    console.log(`Server running on address http://localhost:${PORT}`);
-  });
-}).catch(err => {
-  console.log('Error while connecting to Mongo: ', err);
-});
