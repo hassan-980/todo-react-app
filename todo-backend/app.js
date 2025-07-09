@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/todo", todoItemsRouter);
 
-app.use(errorsController.pageNotFound);
+// app.use(errorsController.pageNotFound);
 
 
 mongoose.connect(DB_PATH).then(() => {
